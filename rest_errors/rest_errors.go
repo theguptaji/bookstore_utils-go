@@ -9,6 +9,15 @@ type RestErr struct {
 	Causes []interface{} `json:"causes"`
 }
 
+func NewRestError(message string, status int, error string, causes []interface{}) *RestErr {
+	return &RestErr{
+		Message: message,
+		Status: status,
+		Error: error,
+		Causes: causes,
+	}
+}
+
 func NewBadRequestError(message string) *RestErr {
 	return &RestErr{
 		Message: message,
@@ -22,6 +31,14 @@ func NewNotFoundError(message string) *RestErr {
 		Message: message,
 		Status:  http.StatusNotFound,
 		Error:   "not_found",
+	}
+}
+
+func NewUnauthorizedError(message string) *RestErr{
+	return &RestErr{
+		Message: "unable to retrieve user information from given access token",
+		Status: http.StatusUnauthorized,
+		Error: "unauthorized",
 	}
 }
 

@@ -28,6 +28,6 @@ func TestNewNotFoundError(t *testing.T) {
 	//	TODO:
 }
 
-func testNewError(t *testing.T){
+func TestNewRestError(t *testing.T) {
 	//	TODO:
 }
