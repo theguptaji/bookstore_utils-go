@@ -15,14 +15,14 @@ type RestErr interface {
 }
 
 type restErr struct {
-	ErrMessage string        `json:"ErrMessage"`
-	ErrStatus  int           `json:"ErrStatus"`
-	ErrError   string        `json:"ErrError"`
-	ErrCauses  []interface{} `json:"ErrCauses"`
+	ErrMessage string        `json:"message"`
+	ErrStatus  int           `json:"status"`
+	ErrError   string        `json:"error"`
+	ErrCauses  []interface{} `json:"causes"`
 }
 
 func (e restErr) Error() string {
-	return fmt.Sprintf("ErrMessage: %s - ErrStatus: %d - ErrError: %s - ErrCauses: %v ",
+	return fmt.Sprintf("message: %s - status: %d - error: %s - causes: %v ",
 			e.ErrMessage, e.ErrStatus, e.ErrError, e.ErrCauses)
 }
 
